@@ -1,0 +1,32 @@
+# Eventrix Configuration Example
+
+# General settings
+service_name: "eventrix-service"
+
+# Kafka settings (if using KafkaBus)
+kafka:
+  brokers:
+    - "localhost:9092"
+  topic_prefix: "eventrix."
+  consumer_group: "eventrix-group"
+  enable_dlq: true
+  dlq_topic_prefix: "eventrix.dlq."
+
+# Retry settings
+retry:
+  max_retries: 3
+  backoff_seconds: 2
+
+# Observability settings
+observability:
+  metrics_port: 9090
+  tracing_enabled: true
+  tracing_endpoint: "http://localhost:14268/api/traces" # Example for Jaeger OTLP HTTP
+
+# DLQ settings
+dlq:
+  enable_dlq: true
+  dlq_topic_prefix: "eventrix.dlq."
+
+# Log level
+log_level: "info"
